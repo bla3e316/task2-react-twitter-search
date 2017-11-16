@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './app.css';
 import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
+import {Timeline} from 'react-twitter-widgets'
+
 
 
 class App extends Component {
@@ -25,6 +27,19 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="App-title">Twitter App</div>
+                <Timeline
+                    dataSource={{
+                        sourceType: 'profile',
+                        screenName: 'realDonaldTrump'
+                    }}
+                    options={{
+                        username: 'realDonaldTrump',
+                        height: '400',
+                        theme: 'dark'
+                    }}
+                    onLoad={() => console.log('Timeline is loaded!')}
+                />
+
                 <FormGroup>
                     <InputGroup>
                         <FormControl
@@ -39,18 +54,33 @@ class App extends Component {
                                 }
                             }}
                         />
+
                         <InputGroup.Addon onClick={() => this.search()}>
                             <Glyphicon glyph="search"/>
                         </InputGroup.Addon>
                     </InputGroup>
                 </FormGroup>
-                <div className="Profile">
-                    <div>User Picture</div>
-                    <div>User Name</div>
-                </div>
-                <div className="Gallery">
-                    Gallary
-                </div>
+
+                <Timeline
+                    dataSource={{
+                        sourceType: 'profile',
+                        screenName: 'HillaryClinton'
+                    }}
+                    options={{
+                        username: 'HillaryClinton',
+                        height: '400',
+                        theme: 'dark'
+                    }}
+                    onLoad={() => console.log('Timeline is loaded!')}
+                />
+
+                {/*<div className="Profile">*/}
+                    {/*<div>User Picture</div>*/}
+                    {/*<div>User Name</div>*/}
+                {/*</div>*/}
+                {/*<div className="Gallery">*/}
+                    {/*Gallary*/}
+                {/*</div>*/}
             </div>
         )
     }
